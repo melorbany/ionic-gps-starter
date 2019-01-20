@@ -1,0 +1,75 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ client.name | uppercase }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h3>{{ client.name }}</h3>
+        <div class="subtitle">{{ client.distance }} KM</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <p>{{ client.phone }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <p>{{ client.email }}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <p>{{ client.details }}</p>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <sebm-google-map
+                [latitude]="client.latitude"
+                [longitude]="client.longitude"
+                [zoom]="15">
+          <sebm-google-map-marker
+                  [latitude]="client.latitude"
+                  [longitude]="client.longitude">
+          </sebm-google-map-marker>
+
+
+        </sebm-google-map>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <button
+                ion-button
+                outline
+                block
+                (click)="onEditClient()">Edit Client</button>
+      </ion-col>
+      <ion-col>
+        <button
+                ion-button
+                outline
+                block
+                (click)="onDeleteClient()"
+                color="danger">Delete Client</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

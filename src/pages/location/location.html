@@ -1,0 +1,50 @@
+<!--
+  Generated template for the Location page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <ion-title>location</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-grid *ngIf="!this.locationProvider.getStatus()" text-center class="waiting_location_grid">
+
+    <ion-row center class="waiting_location">
+      <ion-col>
+        <ion-spinner name="dots"></ion-spinner>
+        <p>Getting Current Location ..</p>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <sebm-google-map
+          [latitude]="locationProvider.latitude"
+          [longitude]="locationProvider.longitude"
+          [zoom]="15"
+          *ngIf="this.locationProvider.getStatus()">
+    <sebm-google-map-marker
+            [latitude]="locationProvider.latitude"
+            [longitude]="locationProvider.longitude">
+    </sebm-google-map-marker>
+
+
+  </sebm-google-map>
+</ion-content>

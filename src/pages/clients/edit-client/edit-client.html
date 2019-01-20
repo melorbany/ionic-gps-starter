@@ -1,0 +1,51 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ mode }} Client</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input
+          type="text"
+          formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Business</ion-label>
+        <ion-select formControlName="business">
+          <ion-option
+            *ngFor="let option of businessOptions"
+            [value]="option.id">{{ option.title }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Phone</ion-label>
+        <ion-textarea formControlName="phone"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>E-Mail</ion-label>
+        <ion-textarea formControlName="email"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-textarea formControlName="details"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!clientForm.valid">{{ mode }} Client</button>
+  </form>
+</ion-content>
+
+
+
